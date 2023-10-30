@@ -1,0 +1,20 @@
+var a: int;
+var i: int;
+var is_prime: bool = true;
+out("Enter how many numbers: "); in(x);
+repeat(x > 0) do {
+in(n)
+repeat(i=2:i<=n/2:i = i + 1) do {
+if(n%i:=0) then {
+is_prime = false;
+break;
+}
+}
+if (is_prime) then {
+out(<a> is a prime number);
+} else {
+out(<a> is not a prime number);
+}
+is_prime = true;
+x = x - 1;
+}

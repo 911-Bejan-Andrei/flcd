@@ -3,15 +3,15 @@ import java.util.*;
 public class SymbolTable {
 
     private final int size;
-    private final Hashtable<Integer, String> table;
+    private final Hashtable<Integer, TuppleDAO> table;
 
     public SymbolTable() {
         this.size = 100;
         this.table = new Hashtable<>(size);
     }
 
-    public void insert(String value) {
-        int key = calculateIndex(value);
+    public void insert(TuppleDAO value) {
+        int key = calculateIndex(value.x);
         table.put(key, value);
     }
 
@@ -41,7 +41,7 @@ public class SymbolTable {
         return this.table.keys();
     }
 
-    public String getValue(int key) {
+    public TuppleDAO getValue(int key) {
         return this.table.get(key);
     }
 }
