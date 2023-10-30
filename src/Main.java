@@ -1,30 +1,14 @@
-import java.util.Enumeration;
+import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) {
-        SymbolTable symbolTable = new SymbolTable();
-        symbolTable.insert("x");
-        symbolTable.insert("y");
+    public static void main(String[] args) throws IOException {
+        Scanner scanner = new Scanner();
+        String p1 = "C:\\Users\\andya\\Desktop\\lab3\\src\\p1";
+        String p2 = "p2.txt";
+        String p3 = "p3.txt";
 
-        Enumeration<Integer> keys = symbolTable.getKeys();
-        while (keys.hasMoreElements()) {
-            int key = keys.nextElement();
-            System.out.println("Key: " + key + ", Value: " + symbolTable.getValue(key));
-        }
-
-        symbolTable.delete("x");
-
-        keys = symbolTable.getKeys();
-
-        while (keys.hasMoreElements()) {
-            int key = keys.nextElement();
-            System.out.println("Key: " + key + ", Value: " + symbolTable.getValue(key));
-        }
-
-        try {
-            symbolTable.lookup("x");
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage()); // Output: Key 'x' not found in the symbol table.
-        }
+        scanner.scan(p1);
+        scanner.scan(p2);
+        scanner.scan(p3);
     }
 }
