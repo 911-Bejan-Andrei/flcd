@@ -9,7 +9,7 @@ break;
 }
 }
 if (is_prime) then {
-out(<a> is a prime number);
+out(<a> #is a prime number#);
 } else {
-out(<a> is not a prime number);
+out(<a> #is not a prime number#);
 }

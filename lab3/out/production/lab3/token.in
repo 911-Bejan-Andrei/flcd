@@ -6,7 +6,6 @@
 }
 :
 ;
-@
 #
 $
 %
@@ -27,6 +26,7 @@ const
 do
 else
 if
+then
 int
 of
 program
@@ -35,4 +35,3 @@ then
 var
 repeat
 out
-break
