@@ -1,5 +1,4 @@
-import java.util.Enumeration;
-import java.util.Hashtable;
+import java.util.*;
 
 public class SymbolTable {
 
@@ -29,17 +28,28 @@ public class SymbolTable {
         return Math.abs(value.hashCode()) % size;
     }
 
-    public void lookup(String value) {
+    public boolean lookup(String value) {
         int key = calculateIndex(value);
         if (table.containsKey(key)) {
-            table.get(key);
+            return true;
         } else {
-            throw new IllegalArgumentException("Key '" + key + "' not found in the symbol table.");
+            return false;
         }
     }
 
     public Enumeration<Integer> getKeys() {
         return this.table.keys();
+    }
+
+    public List<TuppleDAO> getValues() {
+        Iterator<Map.Entry<Integer, TuppleDAO>> iterator = table.entrySet().iterator();
+        List<TuppleDAO> list = new ArrayList<>();
+        while (iterator.hasNext()) {
+            Map.Entry<Integer, TuppleDAO> entry = iterator.next();
+            TuppleDAO value = entry.getValue();
+            list.add(value);
+        }
+        return list;
     }
 
     public TuppleDAO getValue(int key) {
