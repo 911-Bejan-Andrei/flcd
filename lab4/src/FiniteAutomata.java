@@ -18,17 +18,21 @@ public class FiniteAutomata {
 
     public void loadFromFile(String filename) {
         try {
+            String line = "";
+            String aux = line;
             Scanner scanner = new Scanner(new File(filename));
+            line = scanner.nextLine();
             while (scanner.hasNextLine()) {
-                String line = scanner.nextLine().trim();
                 if (line.startsWith("States:")) {
                     states = new HashSet<>(Arrays.asList(line.split(":")[1].split("\\s+")));
+                    line = scanner.nextLine().trim();
                 } else if (line.startsWith("Alphabet:")) {
                     alphabet = new HashSet<>(Arrays.asList(line.split(":")[1].split("\\s+")));
+                    line = scanner.nextLine().trim();
                 } else if (line.startsWith("Transitions:")) {
                     while (scanner.hasNextLine()) {
                         line = scanner.nextLine().trim();
-                        if (line.isEmpty()) {
+                        if (line.isEmpty() || line.startsWith("Initial State:")) {
                             break;
                         }
                         String[] parts = line.split("\\s+");
@@ -39,8 +43,10 @@ public class FiniteAutomata {
                     }
                 } else if (line.startsWith("Initial State:")) {
                     initialState = line.split(":")[1].trim();
+                    line = scanner.nextLine().trim();
                 } else if (line.startsWith("Final States:")) {
                     finalStates = new HashSet<>(Arrays.asList(line.split(":")[1].split("\\s+")));
+                    break;
                 }
             }
             scanner.close();
@@ -79,9 +85,10 @@ public class FiniteAutomata {
         return finalStates.contains(currentState);
     }
 
+
     public static void main(String[] args) {
         FiniteAutomata fa = new FiniteAutomata();
-        fa.loadFromFile("fa_input.txt");
+        fa.loadFromFile("C:\\Users\\andya\\Desktop\\lab4\\fa_input.txt");
         fa.displayElements();
 
         Scanner scanner = new Scanner(System.in);
