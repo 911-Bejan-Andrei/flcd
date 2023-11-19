@@ -78,13 +78,10 @@ public class FiniteAutomata {
             }
             if (transitions.containsKey(currentState) && transitions.get(currentState).containsKey(symbolStr)) {
                 currentState = transitions.get(currentState).get(symbolStr);
-            } else {
-                return false;
             }
         }
         return finalStates.contains(currentState);
     }
-
 
     public static void main(String[] args) {
         FiniteAutomata fa = new FiniteAutomata();
